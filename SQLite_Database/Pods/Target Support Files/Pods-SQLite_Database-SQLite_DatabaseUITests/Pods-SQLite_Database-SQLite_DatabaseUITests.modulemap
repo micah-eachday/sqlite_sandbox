@@ -1,0 +1,6 @@
+framework module Pods_SQLite_Database_SQLite_DatabaseUITests {
+  umbrella header "Pods-SQLite_Database-SQLite_DatabaseUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
