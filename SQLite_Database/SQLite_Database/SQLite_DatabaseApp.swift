@@ -11,7 +11,7 @@ import SwiftUI
 struct SQLite_DatabaseApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeFeed()
         }
     }
 }

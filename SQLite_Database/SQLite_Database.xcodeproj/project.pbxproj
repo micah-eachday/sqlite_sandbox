@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A0B59F5285C920100587BC2 /* EditUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B59F4285C920000587BC2 /* EditUserView.swift */; };
+		0A0B59F7285DA8EF00587BC2 /* HomeFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B59F6285DA8EF00587BC2 /* HomeFeed.swift */; };
 		0A47694F285C281500B10CEE /* SQLite_DatabaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47694E285C281500B10CEE /* SQLite_DatabaseApp.swift */; };
-		0A476951285C281500B10CEE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A476950285C281500B10CEE /* ContentView.swift */; };
 		0A476953285C281500B10CEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A476952285C281500B10CEE /* Assets.xcassets */; };
 		0A476956285C281500B10CEE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A476955285C281500B10CEE /* Preview Assets.xcassets */; };
 		0A476960285C281600B10CEE /* SQLite_DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47695F285C281600B10CEE /* SQLite_DatabaseTests.swift */; };
@@ -42,9 +42,9 @@
 
 /* Begin PBXFileReference section */
 		0A0B59F4285C920000587BC2 /* EditUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserView.swift; sourceTree = "<group>"; };
+		0A0B59F6285DA8EF00587BC2 /* HomeFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeed.swift; sourceTree = "<group>"; };
 		0A47694B285C281500B10CEE /* SQLite_Database.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SQLite_Database.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A47694E285C281500B10CEE /* SQLite_DatabaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite_DatabaseApp.swift; sourceTree = "<group>"; };
-		0A476950285C281500B10CEE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0A476952285C281500B10CEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A476955285C281500B10CEE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0A47695B285C281600B10CEE /* SQLite_DatabaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SQLite_DatabaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,7 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				0A47694E285C281500B10CEE /* SQLite_DatabaseApp.swift */,
-				0A476950285C281500B10CEE /* ContentView.swift */,
+				0A0B59F6285DA8EF00587BC2 /* HomeFeed.swift */,
 				0A0B59F4285C920000587BC2 /* EditUserView.swift */,
 				0AAAF704285C2D61009DBAF4 /* AddUserView.swift */,
 				0A476952285C281500B10CEE /* Assets.xcassets */,
@@ -417,10 +417,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A476951285C281500B10CEE /* ContentView.swift in Sources */,
 				0AAAF6FF285C2AC8009DBAF4 /* UserModel.swift in Sources */,
 				0AAAF705285C2D61009DBAF4 /* AddUserView.swift in Sources */,
 				0A0B59F5285C920100587BC2 /* EditUserView.swift in Sources */,
+				0A0B59F7285DA8EF00587BC2 /* HomeFeed.swift in Sources */,
 				0A47694F285C281500B10CEE /* SQLite_DatabaseApp.swift in Sources */,
 				0AAAF701285C2B69009DBAF4 /* DB_Manager.swift in Sources */,
 			);
