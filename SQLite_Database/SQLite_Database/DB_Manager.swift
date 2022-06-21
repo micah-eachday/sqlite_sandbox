@@ -165,4 +165,15 @@ class DB_Manager {
         }
     }
     
+    // function to update do state
+    public func updateDoState(doID: Int64, doState: ) {
+        do {
+            // get do using ID
+            let doID: Table = doMaster.filter(id == doID)
+                
+            // run the complete query
+            try db.run(doMaster.update(doState <- )) 
+        }
+    }
+    
 }

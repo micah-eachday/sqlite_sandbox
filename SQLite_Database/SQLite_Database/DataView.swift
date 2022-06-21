@@ -1,13 +1,12 @@
 //
-//  HomeFeed.swift
+//  DataView.swift
 //  SQLite_Database
 //
-//  Created by Micah Turpin on 6/17/22.
+//  Created by Micah Turpin on 6/20/22.
 //
-
 import SwiftUI
 
-struct HomeFeed: View {
+struct DataView: View {
     
     // array of user models
     @State var userModels: [UserModel] = []
