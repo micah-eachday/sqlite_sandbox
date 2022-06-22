@@ -9,14 +9,14 @@ import SwiftUI
 
 struct HomeFeed: View {
     
-    // array of user models
-    @State var userModels: [UserModel] = []
+    // array of do models
+    @State var doModels: [DoModel] = []
     
-    // check if user is selected for edit
-    @State var userSelected: Bool = false
+    // check if do is selected for edit
+    @State var doSelected: Bool = false
      
-    // id of selected user to edit or delete
-    @State var selectedUserId: Int64 = 0
+    // id of selected do to edit or delete
+    @State var selectedDoId: Int64 = 0
     
     var body: some View {
         
@@ -28,67 +28,78 @@ struct HomeFeed: View {
                 // create link to add user
                 HStack {
                     Spacer()
-                    NavigationLink (destination: AddUserView(), label: {
-                        Text("See Data")
+                    NavigationLink (destination: AddDoView(), label: {
+                        Text("Add Do")
                     })
                 }
                 
-                // navigation link to go to edit user view this is a test for git
-                NavigationLink (destination: EditUserView(id: self.$selectedUserId), isActive: self.$userSelected) {
+                // navigation link to go to edit do view this is a test for git
+                NavigationLink (destination: EditDoView(id: self.$selectedDoId), isActive: self.$doSelected) {
                     EmptyView()
                 }
          
-                // list view goes here
-                List (self.userModels) { (model) in
+                // create list view
+                List {
+                    ForEach(self.doModels) { (model) in
                  
                     // show name, email and age horizontally
                     VStack {
-                        Spacer()
-                        Text(model.name).frame(width: 300)
-                        Spacer()
-                        Text(model.email).frame(width: 300)
-                        Spacer()
-                        Text("\(model.age)").frame(width: 300)
-                        Spacer()
-                 
-                        
+                        Group { // doID group (need groups because SwiftUI doesn't allow more than 10 static objects in a view)
+                            Text("\(model.doID)").frame(width: 300)
+                            Spacer()
+                        }; Group { // doName group
+                            Text(model.doName).frame(width: 300)
+                            Spacer()
+                        }; Group { // dailyID group
+                            Text("\(model.dailyID)").frame(width: 300)
+                            Spacer()
+                        }; Group { // doState group
+                            Text("\(model.doState)").frame(width: 300)
+                            Spacer()
+                        }; Group { // doTime group
+                            Text(model.doTime).frame(width: 300)
+                            Spacer()
+                        }; Group { // doTimeOfDay group
+                            Text(model.doTimeOfDay).frame(width: 300)
+                            Spacer()
+                        }
+                
                         HStack {
-                            // button to edit user
+                            // button to edit do
                             Button(action: {
-                                self.selectedUserId = model.id
-                                self.userSelected = true
+                                self.selectedDoId = model.doID
+                                self.doSelected = true
                             }, label: {
-                                Text("Edit")
+                                Text("Edit This Do")
                                     .foregroundColor(Color.blue)
                                 })
-                                // by default, buttons are full width.
-                                // to prevent this, use the following
+                                // to keep button from defaulting to full-width
                                 .buttonStyle(PlainButtonStyle())
                             
-                            // button to delete user
+                            // button to delete do
                             Button(action: {
                      
                                 // create db manager instance
                                 let dbManager: DB_Manager = DB_Manager()
                      
                                 // call delete function
-                                dbManager.deleteUser(idValue: model.id)
+                                dbManager.deleteDo(doIDValue: model.doID)
                      
-                                // refresh the user models array
-                                self.userModels = dbManager.getUsers()
+                                // refresh the do models array
+                                self.doModels = dbManager.getDos()()
                             }, label: {
-                                Text("Delete")
+                                Text("Delete This Do")
                                     .foregroundColor(Color.red)
-                            })// by default, buttons are full width.
-                            // to prevent this, use the following
+                            })
+                            // to keep button from defaulting to full-width
                             .buttonStyle(PlainButtonStyle())
                         }
                     }
                 }
-                
+                }
             }.padding()
                 .onAppear(perform: {
-                    self.userModels = DB_Manager().getUsers()
+                    self.doModels = DB_Manager().getDos()()
                 })
             .navigationBarTitle("Eachday Homefeed")
         }

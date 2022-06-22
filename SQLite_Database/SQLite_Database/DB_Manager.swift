@@ -16,15 +16,17 @@ class DB_Manager {
     private var db: Connection!
      
     // table instance
-    private var users: Table!
+    private var doMaster: Table!
  
-    // columns instances of table
-    private var id: Expression<Int64>!
-    private var name: Expression<String>!
-    private var email: Expression<String>!
-    private var age: Expression<Int64>!
+    // defining column variables for initializing later
+    private var doID: Expression<Int64>!
+    private var doName: Expression<String>!
+    private var dailyID: Expression<String>!
+    private var doState: Expression<String>!
+    private var doTime: Expression<String>!
+    private var doTimeOfDay: Expression<String>!
      
-    // constructor of this class
+    // constructor of DB_Manager class
     init () {
          
         // exception handling
@@ -34,26 +36,30 @@ class DB_Manager {
             let path: String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first ?? ""
  
             // creating database connection
-            db = try Connection("\(path)/my_users.sqlite3")
+            db = try Connection("\(path)/do_info.sqlite3")
              
             // creating table object
-            users = Table("users")
+            doMaster = Table("doMaster")
              
             // create instances of each column
-            id = Expression<Int64>("id")
-            name = Expression<String>("name")
-            email = Expression<String>("email")
-            age = Expression<Int64>("age")
+            doID = Expression<Int64>("do id")
+            doName = Expression<String>("do name")
+            dailyID = Expression<String>("daily id")
+            doState = Expression<String>("do state")
+            doTime = Expression<String>("do time")
+            doTimeOfDay = Expression<String>("do time of day")
              
-            // check if the user's table is already created
+            // check if the do's table is already created
             if (!UserDefaults.standard.bool(forKey: "is_db_created")) {
  
                 // if not, then create the table
-                try db.run(users.create { (t) in
-                    t.column(id, primaryKey: true)
-                    t.column(name)
-                    t.column(email, unique: true)
-                    t.column(age)
+                try db.run(doMaster.create { (t) in
+                    t.column(doID, primaryKey: true)
+                    t.column(doName)
+                    t.column(dailyID, unique: true)
+                    t.column(doState)
+                    t.column(doTime)
+                    t.column(doTimeOfDay)
                 })
                  
                 // set the value to true, so it will not attempt to create the table again
@@ -67,112 +73,119 @@ class DB_Manager {
          
     }
     
-    public func addUser(nameValue: String, emailValue: String, ageValue: Int64) {
+    // function to add a do to the doMaster table in the database
+    public func addDo(doNameValue: String, doTimeValue: String, doTimeOfDayValue: String) {
         do {
-            try db.run(users.insert(name <- nameValue, email <- emailValue, age <- ageValue))
+            try db.run(doMaster.insert(doName <- doNameValue, doTime <- doTimeValue, doTimeOfDay <- doTimeOfDayValue))
         } catch {
             print(error.localizedDescription)
         }
     }
     
-    // return array of user models
-    public func getUsers() -> [UserModel] {
+    // return array of do models
+    public func getDos() -> [DoModel] {
          
         // create empty array
-        var userModels: [UserModel] = []
+        var doModels: [DoModel] = []
      
-        // get all users in descending order
-        users = users.order(id.desc)
+        // get all dos in descending order
+        doMaster = doMaster.order(doID.desc)
      
         // exception handling
         do {
      
-            // loop through all users
-            for user in try db.prepare(users) {
+            // loop through all dos
+            for eachDo in try db.prepare(doMaster) {
      
                 // create new model in each loop iteration
-                let userModel: UserModel = UserModel()
+                let doModel: DoModel = DoModel()
      
                 // set values in model from database
-                userModel.id = user[id]
-                userModel.name = user[name]
-                userModel.email = user[email]
-                userModel.age = user[age]
+                doModel.doID = eachDo[doID]
+                doModel.doName = eachDo[doName]
+                doModel.dailyID = eachDo[dailyID]
+                doModel.doState = eachDo[doState]
+                doModel.doTime = eachDo[doTime]
+                doModel.doTimeOfDay = eachDo[doTimeOfDay]
      
                 // append in new array
-                userModels.append(userModel)
+                doModels.append(doModel)
             }
         } catch {
             print(error.localizedDescription)
         }
      
         // return array
-        return userModels
+        return doModels
     }
     
-    // get single user data
-    public func getUser(idValue: Int64) -> UserModel {
+    // get single do data for editing
+    public func getDo(doIDValue: Int64) -> DoModel {
      
         // create an empty object
-        let userModel: UserModel = UserModel()
+        let doModel: DoModel = DoModel()
          
         // exception handling
         do {
      
-            // get user using ID
-            let user: AnySequence<Row> = try db.prepare(users.filter(id == idValue))
+            // get do using ID
+            let eachDo: AnySequence<Row> = try db.prepare(doMaster.filter(doID == doIDValue))
      
             // get row
-            try user.forEach({ (rowValue) in
+            try eachDo.forEach({ (rowValue) in
      
                 // set values in model
-                userModel.id = try rowValue.get(id)
-                userModel.name = try rowValue.get(name)
-                userModel.email = try rowValue.get(email)
-                userModel.age = try rowValue.get(age)
+                doModel.doID = try rowValue.get(doID)
+                doModel.doName = try rowValue.get(doName)
+                doModel.dailyID = try rowValue.get(dailyID)
+                doModel.doState = try rowValue.get(doState)
+                doModel.doTime = try rowValue.get(doTime)
+                doModel.doTimeOfDay = try rowValue.get(doTimeOfDay)
             })
         } catch {
             print(error.localizedDescription)
         }
      
         // return model
-        return userModel
+        return doModel
     }
     
-    // function to update user
-    public func updateUser(idValue: Int64, nameValue: String, emailValue: String, ageValue: Int64) {
+    // function to update do
+    public func updateDo(doIDValue: Int64, doNameValue: String, dailyIDValue: String, doStateValue: String, doTimeValue: String, doTimeOfDayValue: String) {
         do {
-            // get user using ID
-            let user: Table = users.filter(id == idValue)
+            // get do using ID
+            let eachDo: Table = doMaster.filter(doID == doIDValue)
              
             // run the update query
-            try db.run(user.update(name <- nameValue, email <- emailValue, age <- ageValue))
+            try db.run(eachDo.update(doID <- doIDValue, doName <- doNameValue, dailyID <- dailyIDValue, doTime <- doTimeValue, doTimeOfDay <- doTimeOfDayValue))
         } catch {
             print(error.localizedDescription)
         }
     }
     
-    // function to delete user
-    public func deleteUser(idValue: Int64) {
+    // function to delete do
+    public func deleteDo(doIDValue: Int64) {
         do {
-            // get user using ID
-            let user: Table = users.filter(id == idValue)
+            // get do using ID
+            let eachDo: Table = doMaster.filter(doID == doIDValue)
              
             // run the delete query
-            try db.run(user.delete())
+            try db.run(eachDo.delete())
         } catch {
             print(error.localizedDescription)
         }
     }
     
     // function to update do state
-    public func updateDoState(doID: Int64, doState: ) {
+    public func updateDoState(doIDValue: Int64, doStateValue: String) {
         do {
             // get do using ID
-            let doID: Table = doMaster.filter(id == doID)
+            let eachDo: Table = doMaster.filter(doID == doIDValue)
                 
             // run the complete query
-            try db.run(doMaster.update(doState <- )) 
+            try db.run(eachDo.update(doState <- doStateValue))
+        } catch {
+            print(error.localizedDescription)
         }
     }
     

@@ -7,52 +7,50 @@
 
 import SwiftUI
  
-struct AddUserView: View {
+struct AddDoView: View {
      
-    // create variables to store user input values
-    @State var name: String = ""
-    @State var email: String = ""
-    @State var age: String = ""
+    // create variables to store do input values
+    @State var doNameInputValue: String = ""
+    @State var dailyIDInputValue: String = ""
+    @State var doTimeInputValue: String = ""
+    @State var doTimeOfDayInputValue: String = ""
      
-    // to go back on the home screen when the user is added
+    // to go back on the home feed when the do is added
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
      
     var body: some View {
          
         VStack {
-            // create name field
-            TextField("Enter name", text: $name)
+            // create doName field
+            TextField("Enter Do Name", text: $doNameInputValue)
+                .padding(10)
+                .background(Color(.systemGray6))
+                .cornerRadius(5)
+                .disableAutocorrection(true)
+            
+            // create doTime field
+            TextField("Enter Do Time", text: $doTimeInputValue)
+                .padding(10)
+                .background(Color(.systemGray6))
+                .cornerRadius(5)
+                .disableAutocorrection(true)
+            
+            // create doTimeOfDay field
+            TextField("Enter Do Time of Day (Morning, Afternoon, Evening)", text: $doTimeOfDayInputValue)
                 .padding(10)
                 .background(Color(.systemGray6))
                 .cornerRadius(5)
                 .disableAutocorrection(true)
              
-            // create email field
-            TextField("Enter email", text: $email)
-                .padding(10)
-                .background(Color(.systemGray6))
-                .cornerRadius(5)
-                .keyboardType(.emailAddress)
-                .autocapitalization(.none)
-                .disableAutocorrection(true)
-             
-            // create age field, number pad
-            TextField("Enter age", text: $age)
-                .padding(10)
-                .background(Color(.systemGray6))
-                .cornerRadius(5)
-                .keyboardType(.numberPad)
-                .disableAutocorrection(true)
-             
-            // button to add a user
+            // button to add a do
             Button(action: {
                 // call function to add row in sqlite database
-                DB_Manager().addUser(nameValue: self.name, emailValue: self.email, ageValue: Int64(self.age) ?? 0)
+                DB_Manager().addDo(doNameValue: self.doNameInputValue, doTimeValue: self.doTimeInputValue, doTimeOfDayValue: self.doTimeOfDayInputValue)
                  
                 // go back to home page
                 self.mode.wrappedValue.dismiss()
             }, label: {
-                Text("Add User")
+                Text("Add Do")
             })
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .padding(.top, 10)

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A0B59F5285C920100587BC2 /* EditUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B59F4285C920000587BC2 /* EditUserView.swift */; };
+		0A0B59F5285C920100587BC2 /* EditDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B59F4285C920000587BC2 /* EditDoView.swift */; };
 		0A0B59F7285DA8EF00587BC2 /* HomeFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B59F6285DA8EF00587BC2 /* HomeFeed.swift */; };
 		0A47694F285C281500B10CEE /* SQLite_DatabaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47694E285C281500B10CEE /* SQLite_DatabaseApp.swift */; };
 		0A476953285C281500B10CEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A476952285C281500B10CEE /* Assets.xcassets */; };
@@ -15,10 +15,9 @@
 		0A476960285C281600B10CEE /* SQLite_DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47695F285C281600B10CEE /* SQLite_DatabaseTests.swift */; };
 		0A47696A285C281600B10CEE /* SQLite_DatabaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A476969285C281600B10CEE /* SQLite_DatabaseUITests.swift */; };
 		0A47696C285C281600B10CEE /* SQLite_DatabaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47696B285C281600B10CEE /* SQLite_DatabaseUITestsLaunchTests.swift */; };
-		0AAAF6FF285C2AC8009DBAF4 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAAF6FE285C2AC8009DBAF4 /* UserModel.swift */; };
+		0AAAF6FF285C2AC8009DBAF4 /* DoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAAF6FE285C2AC8009DBAF4 /* DoModel.swift */; };
 		0AAAF701285C2B69009DBAF4 /* DB_Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAAF700285C2B69009DBAF4 /* DB_Manager.swift */; };
-		0AAAF705285C2D61009DBAF4 /* AddUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAAF704285C2D61009DBAF4 /* AddUserView.swift */; };
-		0ACCBBB32861841C00922056 /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCBBB22861841C00922056 /* DataView.swift */; };
+		0AAAF705285C2D61009DBAF4 /* AddDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAAF704285C2D61009DBAF4 /* AddDoView.swift */; };
 		0ECA87522CFD926AEB836DE7 /* Pods_SQLite_DatabaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927D941BD190EE74086D21A5 /* Pods_SQLite_DatabaseTests.framework */; };
 		1DDB1709AB5924DE9702AF05 /* Pods_SQLite_Database_SQLite_DatabaseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523726EEF26050E76CCFA766 /* Pods_SQLite_Database_SQLite_DatabaseUITests.framework */; };
 		A862EF647AB7120A688B1DB8 /* Pods_SQLite_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D969F90BF27A7784BC64F66 /* Pods_SQLite_Database.framework */; };
@@ -42,7 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0A0B59F4285C920000587BC2 /* EditUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserView.swift; sourceTree = "<group>"; };
+		0A0B59F4285C920000587BC2 /* EditDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDoView.swift; sourceTree = "<group>"; };
 		0A0B59F6285DA8EF00587BC2 /* HomeFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeed.swift; sourceTree = "<group>"; };
 		0A47694B285C281500B10CEE /* SQLite_Database.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SQLite_Database.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A47694E285C281500B10CEE /* SQLite_DatabaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite_DatabaseApp.swift; sourceTree = "<group>"; };
@@ -53,10 +52,9 @@
 		0A476965285C281600B10CEE /* SQLite_DatabaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SQLite_DatabaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A476969285C281600B10CEE /* SQLite_DatabaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite_DatabaseUITests.swift; sourceTree = "<group>"; };
 		0A47696B285C281600B10CEE /* SQLite_DatabaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite_DatabaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		0AAAF6FE285C2AC8009DBAF4 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		0AAAF6FE285C2AC8009DBAF4 /* DoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoModel.swift; sourceTree = "<group>"; };
 		0AAAF700285C2B69009DBAF4 /* DB_Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB_Manager.swift; sourceTree = "<group>"; };
-		0AAAF704285C2D61009DBAF4 /* AddUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserView.swift; sourceTree = "<group>"; };
-		0ACCBBB22861841C00922056 /* DataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
+		0AAAF704285C2D61009DBAF4 /* AddDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDoView.swift; sourceTree = "<group>"; };
 		0DAABCF7A6EBE019BBE8F496 /* Pods-SQLite_Database.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SQLite_Database.debug.xcconfig"; path = "Target Support Files/Pods-SQLite_Database/Pods-SQLite_Database.debug.xcconfig"; sourceTree = "<group>"; };
 		1A420F8204B3584B2DE2DBB3 /* Pods-SQLite_DatabaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SQLite_DatabaseTests.debug.xcconfig"; path = "Target Support Files/Pods-SQLite_DatabaseTests/Pods-SQLite_DatabaseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3D969F90BF27A7784BC64F66 /* Pods_SQLite_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SQLite_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,13 +121,12 @@
 			children = (
 				0A47694E285C281500B10CEE /* SQLite_DatabaseApp.swift */,
 				0A0B59F6285DA8EF00587BC2 /* HomeFeed.swift */,
-				0A0B59F4285C920000587BC2 /* EditUserView.swift */,
-				0AAAF704285C2D61009DBAF4 /* AddUserView.swift */,
+				0A0B59F4285C920000587BC2 /* EditDoView.swift */,
+				0AAAF704285C2D61009DBAF4 /* AddDoView.swift */,
 				0A476952285C281500B10CEE /* Assets.xcassets */,
 				0A476954285C281500B10CEE /* Preview Content */,
-				0AAAF6FE285C2AC8009DBAF4 /* UserModel.swift */,
+				0AAAF6FE285C2AC8009DBAF4 /* DoModel.swift */,
 				0AAAF700285C2B69009DBAF4 /* DB_Manager.swift */,
-				0ACCBBB22861841C00922056 /* DataView.swift */,
 			);
 			path = SQLite_Database;
 			sourceTree = "<group>";
@@ -420,10 +417,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AAAF6FF285C2AC8009DBAF4 /* UserModel.swift in Sources */,
-				0AAAF705285C2D61009DBAF4 /* AddUserView.swift in Sources */,
-				0A0B59F5285C920100587BC2 /* EditUserView.swift in Sources */,
-				0ACCBBB32861841C00922056 /* DataView.swift in Sources */,
+				0AAAF6FF285C2AC8009DBAF4 /* DoModel.swift in Sources */,
+				0AAAF705285C2D61009DBAF4 /* AddDoView.swift in Sources */,
+				0A0B59F5285C920100587BC2 /* EditDoView.swift in Sources */,
 				0A0B59F7285DA8EF00587BC2 /* HomeFeed.swift in Sources */,
 				0A47694F285C281500B10CEE /* SQLite_DatabaseApp.swift in Sources */,
 				0AAAF701285C2B69009DBAF4 /* DB_Manager.swift in Sources */,
