@@ -34,7 +34,7 @@ struct HomeFeed: View {
                 }
                 
                 // navigation link to go to edit do view this is a test for git
-                NavigationLink (destination: EditDoView(id: self.$selectedDoId), isActive: self.$doSelected) {
+                NavigationLink (destination: EditDoView(doID: self.$selectedDoId), isActive: self.$doSelected) {
                     EmptyView()
                 }
          
@@ -42,33 +42,24 @@ struct HomeFeed: View {
                 List {
                     ForEach(self.doModels) { (model) in
                  
-                    // show name, email and age horizontally
+                    // show do information
                     VStack {
-                        Group { // doID group (need groups because SwiftUI doesn't allow more than 10 static objects in a view)
-                            Text("\(model.doID)").frame(width: 300)
-                            Spacer()
-                        }; Group { // doName group
-                            Text(model.doName).frame(width: 300)
-                            Spacer()
-                        }; Group { // dailyID group
-                            Text("\(model.dailyID)").frame(width: 300)
-                            Spacer()
-                        }; Group { // doState group
-                            Text("\(model.doState)").frame(width: 300)
-                            Spacer()
-                        }; Group { // doTime group
-                            Text(model.doTime).frame(width: 300)
-                            Spacer()
-                        }; Group { // doTimeOfDay group
-                            Text(model.doTimeOfDay).frame(width: 300)
-                            Spacer()
-                        }
-                
+                        Text("\(model.doID ?? 0)").frame(width: 300)
+                        Text(model.doName).frame(width: 300)
+                        Text("\(model.dailyID)").frame(width: 300)
+                        Text("\(model.doState)").frame(width: 300)
+                        Text(model.doTime).frame(width: 300)
+                        Text(model.doTimeOfDay).frame(width: 300)
+            
                         HStack {
                             // button to edit do
                             Button(action: {
-                                self.selectedDoId = model.doID
+                                self.selectedDoId = model.doID ?? 0
+                                print("Select Do ID: ")
+                                print(self.selectedDoId)
                                 self.doSelected = true
+                                print("Selected Do: ")
+                                print(self.doSelected)
                             }, label: {
                                 Text("Edit This Do")
                                     .foregroundColor(Color.blue)
@@ -81,12 +72,17 @@ struct HomeFeed: View {
                      
                                 // create db manager instance
                                 let dbManager: DB_Manager = DB_Manager()
+                                print("dbManager: ")
+                                print(dbManager)
                      
                                 // call delete function
-                                dbManager.deleteDo(doIDValue: model.doID)
+                                dbManager.deleteDo(doIDValue: model.doID ?? 0)
+                                print("ID of Do being deleted: ")
+                                print(model.doID ?? 0)
                      
                                 // refresh the do models array
-                                self.doModels = dbManager.getDos()()
+                                self.doModels = dbManager.getDos()
+                                print(self.doModels)
                             }, label: {
                                 Text("Delete This Do")
                                     .foregroundColor(Color.red)
@@ -99,11 +95,12 @@ struct HomeFeed: View {
                 }
             }.padding()
                 .onAppear(perform: {
-                    self.doModels = DB_Manager().getDos()()
+                    self.doModels = DB_Manager().getDos()
+                    print(self.doModels)
                 })
             .navigationBarTitle("Eachday Homefeed")
         }
-        
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
